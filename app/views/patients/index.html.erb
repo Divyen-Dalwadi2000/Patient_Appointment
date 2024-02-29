@@ -1,0 +1,25 @@
+<%= link_to 'New Create ', new_patient_path %>
+<legend> patients </legend>
+<table class="table mt-5 table-striped ">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Doctor</th>
+      <th scope="col">appointment_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @patients.each do |p| %> 
+        <tr>
+            <td><%= p.id %></td>
+            <td><%= p.name %></td>
+            <% p.appointments.each do |date| %>
+                <td><%= date.physician.name  %></td>     
+                <td><%= date.appointment_date  %></td>     
+            <% end %>
+                <td><%= link_to 'View', patient_path(p) %></td>     
+        </tr>
+    <% end %>
+  </tbody>
+</table>

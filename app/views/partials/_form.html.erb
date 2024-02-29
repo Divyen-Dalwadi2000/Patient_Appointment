@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="height:100vh;">
+    <div class="col-md-6">
+      <%= form_with(model: @patient ) do |f| %>
+        <form class="row g-3">
+          <div class="col-md-12">
+            <%= f.label :name, class: "form-label" %>
+            <%= f.text_field :name, placeholder: "Enter Your Name", class: "form-control" %>
+          </div>
+          
+          <%= f.fields_for :appointments do |a| %>
+            <div class="col-md-6">
+              <%= a.label :appointment_date ,class: "form-label" %>
+              <%= a.date_field :appointment_date , placeholder: "Enter Your Name", class:"form-control" %>
+            </div>
+            <div class="col-md-6">
+              <%= a.label :physician_id ,class: "form-label" %>
+              <%= a.collection_select :physician_id , Physician.all , :id , :name , placeholder: "Enter Your Name", class:"form-control" %>
+            </div>
+          <% end %>
+
+          <div class="col-md-12">
+            <%= f.submit "Create patient", class: "btn btn-primary" %>
+          </div>
+        </form>
+      <% end %>
+    </div>
+  </div>
+</div>

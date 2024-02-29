@@ -1,0 +1,33 @@
+<table class="table">
+  <thead >
+    <tr>
+      <th scope="col">DETAILS OF THE PATIENT</th>
+      <th colspan="2" scope="col" >
+        <%= link_to 'EDIT', edit_patient_path %>
+        <%= link_to 'DELETE', patient_path(@patient) ,data:
+        {
+          turbo_method: :delete ,
+          turbo_confirm: "Are Sure Want to delete Patient ? "
+        }, class: "style:red" %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>Id : </td>
+        <td><%= @patient.id %></td>
+    </tr>
+    <tr>
+        <td>Name : </td>
+        <td><%= @patient.name %></td>
+    </tr>
+    <tr>
+        <td>Appointment Date </td>
+        <td>
+          <% @patient.appointments.each do |date| %>
+            <%= date.appointment_date %> 
+          <% end %>
+        </td>
+    </tr>
+  </tbody>
+</table>

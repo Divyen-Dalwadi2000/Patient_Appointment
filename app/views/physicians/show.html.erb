@@ -1,0 +1,44 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">DETAILS OF THE Physician</th>
+      <th colspan="2" scope="col" >
+        <%= link_to 'EDIT', edit_physician_path %>
+        <%= link_to 'DELETE', physician_path(@physician) ,data:
+        {
+          turbo_method: :delete ,
+          turbo_confirm: "Are Sure Want to delete Physician ? "
+        }, class: "style:red" %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>Id : </td>
+        <td><%= @physician.id %></td>
+    </tr>
+    <tr>
+        <td>Name : </td>
+        <td><%= @physician.name %></td>
+    </tr>
+  <% i=0 %> 
+  <% @physician.appointments.each do |p| %>
+
+      <% i+=1 %> 
+    <tr>
+      <td>patient Name <%= i %> </td>
+      <td>
+          <strong> <%= p.patient.name %> </strong>
+      </td>
+    </tr>
+    <tr>
+      <td>Appointment Date:   </td>
+      <td>
+           <%= p.appointment_date %>
+      </td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>

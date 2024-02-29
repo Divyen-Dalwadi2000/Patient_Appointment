@@ -1,0 +1,33 @@
+<%= link_to 'New Create ', new_physician_path %>
+<fieldset>
+<legend> DOCTOR </legend>
+<table class="table mt-5 table-striped ">
+
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+
+      <th scope="col">Patient</th>
+      <th scope="col">appointment_date</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @physicians.each do |ph| %> 
+        <tr>
+            <td><%= ph.id %></td>
+            <td><%= ph.name %></td>
+            <% ph.appointments.each do |date| %>
+
+                <td><%= date.patient.name %></td> 
+                <td><%= date.appointment_date %></td> 
+                
+            <% end %>
+
+            <td><%= link_to 'View', physician_path(ph) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+</fieldset>

@@ -1,0 +1,12 @@
+<h1>Fill Physician Details</h1>
+<%= form_with(model: @physician ) do |f| %>
+<div>
+
+ <%= f.label :name %>
+ <%= f.text_field :name , palceholder: "Enter Your Name" %>
+</div>
+<div>
+    <%= f.submit "Create DOCTOR" %>
+</div>
+
+<% end %>
